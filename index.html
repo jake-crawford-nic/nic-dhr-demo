@@ -101,32 +101,43 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-12 col-md-6">
-                  <div><label for="driverLicenseNum">Driver License Number: </label><input class="form-control" value="ZC234030K" type="text" id="driverLicenseNum"></div>
-                  <div><label for="driverDob">Driver Date of Birth: </label><input class="form-control" value="19230816" type="text" id="driverDob"></div>
-                  <div><label for="driverFirstName">Driver First Name: </label><input class="form-control" type="text" id="driverFirstName"></div>
-                  <div><label for="driverMiddleName">Driver Middle Name: </label><input class="form-control" type="text" id="driverMiddleName"></div>
-                  <div><label for="driverLastName">Driver Last Name: </label><input class="form-control" type="text" id="driverLastName"></div>
-                  <div><label for="policyNumber">Policy Number: </label><input class="form-control" type="text" id="policyNumber"></div>
-                  <div><button class='btn btn-primary float-right mt-3' id="submit">Submit</button></div>
+                <div class="col-12 col-md-6 border-right">
+                  <div class="form-group">
+                      <label for="exampleFormControlSelect1">Filter Results</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                          <option>All States</option>
+                          <option>State 1</option>
+                          <option>State 2</option>
+                          <option>State 3</option>
+                          <option>State 4</option>
+                          <option>State 5</option>
+                      </select>
+                  </div>
+                  <div class="form-group"><label for="driverLicenseNum">Driver License Number: </label><input class="form-control" value="ZC234030K" type="text" id="driverLicenseNum"></div>
+                  <div class="form-group"><label for="driverDob">Driver Date of Birth: </label><input class="form-control" value="19230816" type="text" id="driverDob"></div>
+                  <div class="form-group"><label for="driverFirstName">Driver First Name: </label><input class="form-control" type="text" id="driverFirstName"></div>
+                  <div class="form-group"><label for="driverMiddleName">Driver Middle Name: </label><input class="form-control" type="text" id="driverMiddleName"></div>
+                  <div class="form-group"><label for="driverLastName">Driver Last Name: </label><input class="form-control" type="text" id="driverLastName"></div>
+                  <div class="form-group"><label for="policyNumber">Policy Number: </label><input class="form-control" type="text" id="policyNumber"></div>
+                  <div class="form-group"><button class='btn btn-primary float-right mt-3' id="submit">Submit</button></div>
                 </div>
                 <!-- PUT BORDER RIGHT HERE -->
                 <div class="border-top col-12 d-md-none my-3"></div>
                 <div class="col-12 col-md-6">
-                  <div><span class="font-weight-bold">State:</span><span id="state"></span></div>
-                  <div><span class="font-weight-bold">Account:</span><span id="account"></span></div>
-                  <div><span class="font-weight-bold">CDL Status:</span> <span id="cdlStatus"></span></div>
-                  <div><span class="font-weight-bold">Date of Birth:</span> <span id="driverDob"></span></div>
-                  <div><span class="font-weight-bold">Driver License Number:</span> <span id="driverLicenseNum"></span></div>
-                  <div><span class="font-weight-bold">Name:</span> <span id="driverName"></span></div>
-                  <div><span class="font-weight-bold">Endoresements:</span> <span id="endorsements"></span></div>
-                  <div><span class="font-weight-bold">Expirationn Date:</span> <span id="expirationDate"></span></div>
-                  <div><span class="font-weight-bold">Issue Date:</span> <span id="issueDate"></span></div>
-                  <div><span class="font-weight-bold">Issue Type:</span> <span id="issueType"></span></div>
-                  <div><span class="font-weight-bold">License Class:</span> <span id="licenseClass"></span></div>
-                  <div><span class="font-weight-bold">Operator Status:</span> <span id="operatorStatus"></span></div>
-                  <div><span class="font-weight-bold">Record Type:</span> <span id="recordType"></span></div>
-                  <div><span class="font-weight-bold">Restrictions:</span> <span id="restrictions"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">State:</span><span id="state"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Account:</span><span id="account"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">CDL Status:</span> <span id="cdlStatus"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Date of Birth:</span> <span id="driverDob"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Driver License Number:</span> <span id="driverLicenseNum"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Name:</span> <span id="driverName"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Endoresements:</span> <span id="endorsements"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Expirationn Date:</span> <span id="expirationDate"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Issue Date:</span> <span id="issueDate"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Issue Type:</span> <span id="issueType"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">License Class:</span> <span id="licenseClass"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Operator Status:</span> <span id="operatorStatus"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Record Type:</span> <span id="recordType"></span></div>
+                  <div class="form-group"><span class="font-weight-bold text-muted">Restrictions:</span> <span id="restrictions"></span></div>
                 </div>
               </div>
             </div>
@@ -149,7 +160,7 @@
     var request={
       "state":state,
       "accountId":accountId,
-      "driverHistoryRequestData": {
+      "dhrRequestData": {
     		"driverLicenseNum": driverLicenseNum,
     		"driverDob": driverDob,
     		"driverFirstName": driverFirstName,
@@ -177,6 +188,7 @@
   function sendRequest(request) {
     var oReq = new XMLHttpRequest();
     var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
+    // var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/ok/';
     oReq.addEventListener("load", reqListener);
     oReq.open('POST', url, true);
     oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
