@@ -52,7 +52,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   width: 50px;
   height: 50px;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   background: rgba(52, 58, 64, 0.5);
   line-height: 46px;
 }
@@ -90,7 +90,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .navbar-nav .nav-item.active .nav-link {
-  color: #fff;
+  color: #ffffff;
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
@@ -240,10 +240,6 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   top: 56px;
   height: calc(100vh - 56px);
   overflow-y: auto;
-}
-
-.navbar-dark .navbar-brand {
-  color: red;
 }
 
 .card-body-icon {
