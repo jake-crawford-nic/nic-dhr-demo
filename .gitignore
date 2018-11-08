@@ -28,7 +28,6 @@ readme.html
 license.txt
 .log
 .DS_Store
-/vendor/
 
 .sass-cache/*
 
