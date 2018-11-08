@@ -105,9 +105,9 @@
                       <label for="exampleFormControlSelect1">Filter Results</label>
                       <select id='stateId' class="form-control" id="exampleFormControlSelect1">
                           <option>All States</option>
-                          <option value='UT'>Utah</option>
-                          <option value='ID'>Idaho</option>
-                          <option>State 3</option>
+                          <option value='ut'>Utah</option>
+                          <option value='id'>Idaho</option>
+                          <option value='ok'>Oklahoma</option>
                           <option>State 4</option>
                           <option>State 5</option>
                       </select>
@@ -186,7 +186,7 @@
 
 
 
-  function sendRequest(request) {
+  function sendRequest(request, state) {
     var oReq = new XMLHttpRequest();
     //var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
      var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/' + state;
