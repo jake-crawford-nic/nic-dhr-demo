@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="index.html"><i class="fas fa-id-card fa-fw"></i> [State] DHR Enterprise</a>
+
+      <!-- Navbar -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#">Activity Log</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div id="wrapper">
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Renewal</a>
+            </li>
+            <li class="breadcrumb-item active">Step 1</li>
+          </ol>
+
+
+          <div class="row">
+            <div class="col-12">
+                <h1> Renew Your [State] Driver's License </h1>
+                <p> Please enter the following information to start the renewal process. </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="col-12">
+                <h2 class="h3">Pull Request</h2>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div><label for="driverLicenseNum">Driver License Number: </label><input class="form-control" value="ZC234030K" type="text" id="driverLicenseNum"></div>
+                  <div><label for="driverDob">Driver Date of Birth: </label><input class="form-control" value="19230816" type="text" id="driverDob"></div>
+                  <div><label for="driverFirstName">Driver First Name: </label><input class="form-control" type="text" id="driverFirstName"></div>
+                  <div><label for="driverMiddleName">Driver Middle Name: </label><input class="form-control" type="text" id="driverMiddleName"></div>
+                  <div><label for="driverLastName">Driver Last Name: </label><input class="form-control" type="text" id="driverLastName"></div>
+                  <div><label for="policyNumber">Policy Number: </label><input class="form-control" type="text" id="policyNumber"></div>
+                  <div><button id="submit" class="btn btn-primary float-right mt-3">Submit</button></div>
+                </div>
+                <!-- PUT BORDER RIGHT HERE -->
+                <div class="border-top col-12 d-md-none my-3"></div>
+                <div class="col-12 col-md-6">
+                  <div>State:<span id="state"></span></div>
+                  <div>Account:<span id="account"></span></div>
+                  <div>CDL Status: <span id="cdlStatus"></span></div>
+                  <div>Date of Birth: <span id="driverDob"></span></div>
+                  <div>Driver License Number: <span id="driverLicenseNum"></span></div>
+                  <div>Name: <span id="driverName"></span></div>
+                  <div>Endoresements: <span id="endorsements"></span></div>
+                  <div>Expirationn Date: <span id="expirationDate"></span></div>
+                  <div>Issue Date: <span id="issueDate"></span></div>
+                  <div>Issue Type: <span id="issueType"></span></div>
+                  <div>License Class: <span id="licenseClass"></span></div>
+                  <div>Operator Status: <span id="operatorStatus"></span></div>
+                  <div>Record Type: <span id="recordType"></span></div>
+                  <div>Restrictions: <span id="restrictions"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  <script>
+
+  var state="ID";
+  var accountId="020514327Z";
+
+  document.querySelector("#submit").addEventListener("click", function() {
+
+    var driverLicenseNum = document.querySelector("#driverLicenseNum").value;
+    var driverDob = document.querySelector("#driverDob").value;
+    var driverFirstName = document.querySelector("#driverFirstName").value;
+    var driverMiddleName = document.querySelector("#driverMiddleName").value;
+    var driverLastName = document.querySelector("#driverLastName").value;
+    var policyNumber = document.querySelector("#policyNumber").value;
+    var request={
+      "state":state,
+      "accountId":accountId,
+      "driverHistoryRequestData": {
+    		"driverLicenseNum": driverLicenseNum,
+    		"driverDob": driverDob,
+    		"driverFirstName": driverFirstName,
+    		"driverMiddleName": driverMiddleName,
+    		"driverLastName": driverLastName,
+    		"policyNumber": policyNumber
+    	}
+    }
+    sendRequest(request);
+  })
+  function reqListener () {
+    var data = JSON.parse(this.responseText);
+    document.querySelector("#state").textContent = data.state;
+    document.querySelector("#account").textContent = data.accountId;
+    var p = data.driverHistoryResponseData;
+    for (var key in p) {
+      if (p.hasOwnProperty(key)) {
+        document.querySelector("#"+key).textContent = p[key];
+      }
+    }
+  }
+
+
+
+  function sendRequest(request) {
+    var oReq = new XMLHttpRequest();
+    var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
+    oReq.addEventListener("load", reqListener);
+    oReq.open('POST', url, true);
+    oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    oReq.send(JSON.stringify(request));
+  }
+
+  </script>
+
+          
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer w-100">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © Your Website 2018</span>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+
+  </body>
+
+</html>
