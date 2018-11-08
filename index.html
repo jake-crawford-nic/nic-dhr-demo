@@ -103,10 +103,10 @@
                 <div class="col-12 col-md-6 border-right">
                   <div class="form-group">
                       <label for="exampleFormControlSelect1">Filter Results</label>
-                      <select class="form-control" id="exampleFormControlSelect1">
+                      <select id='stateId' class="form-control" id="exampleFormControlSelect1">
                           <option>All States</option>
-                          <option>State 1</option>
-                          <option>State 2</option>
+                          <option value='UT'>Utah</option>
+                          <option value='ID'>Idaho</option>
                           <option>State 3</option>
                           <option>State 4</option>
                           <option>State 5</option>
@@ -150,6 +150,8 @@
 
   document.querySelector("#submit").addEventListener("click", function() {
 
+    
+    var state = document.querySelector('#stateId').value;
     var driverLicenseNum = document.querySelector("#driverLicenseNum").value;
     var driverDob = document.querySelector("#driverDob").value;
     var driverFirstName = document.querySelector("#driverFirstName").value;
@@ -168,7 +170,7 @@
     		"policyNumber": policyNumber
     	}
     }
-    sendRequest(request);
+    sendRequest(request, state);
   })
   function reqListener () {
     var data = JSON.parse(this.responseText);
@@ -186,8 +188,8 @@
 
   function sendRequest(request) {
     var oReq = new XMLHttpRequest();
-    var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
-    // var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/ok/';
+    //var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
+     var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/' + state;
     oReq.addEventListener("load", reqListener);
     oReq.open('POST', url, true);
     oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
