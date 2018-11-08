@@ -186,8 +186,8 @@
 
   function sendRequest(request) {
     var oReq = new XMLHttpRequest();
-    var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
-    // var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/ok/';
+    //var url = 'https://xkswurjg63.execute-api.us-east-1.amazonaws.com/default/sample-1nic-dhr';
+     var url = 'http://awseb-e-d-awsebloa-1a8ualip54nv3-1353270375.us-east-2.elb.amazonaws.com/api/v1/dhr/ok/';
     oReq.addEventListener("load", reqListener);
     oReq.open('POST', url, true);
     oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
