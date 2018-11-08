@@ -12,6 +12,8 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
+
+// Enterprise Colors
 $blue: #007bff !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -22,6 +24,10 @@ $yellow: #ffc107 !default;
 $green: #28a745 !default;
 $teal: #20c997 !default;
 $cyan: #17a2b8 !default;
+
+// Over write with State Colors here
+// TODO put this in another file
+$blue: red;
 
 // Spacing Variables
 // Change below variable if the height of the navbar changes

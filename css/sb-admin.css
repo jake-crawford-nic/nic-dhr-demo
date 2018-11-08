@@ -242,6 +242,10 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   overflow-y: auto;
 }
 
+.navbar-dark .navbar-brand {
+  color: red;
+}
+
 .card-body-icon {
   position: absolute;
   z-index: 0;
